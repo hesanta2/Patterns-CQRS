@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Read.Domain.Cars;
 
-namespace Infraesctructure.Persistence
+namespace Read.Infrasctructure.Persistence.Cars
 {
     public class CarMemoryRepository : ICarRepository
     {

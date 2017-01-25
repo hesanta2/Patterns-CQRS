@@ -7,8 +7,8 @@
     <ProjectGuid>{F522767B-A2CD-460E-9D08-21222EBB70B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Read.Domain</RootNamespace>
-    <AssemblyName>Read.Domain</AssemblyName>
+    <RootNamespace>Read.Application</RootNamespace>
+    <AssemblyName>Read.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,16 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cars\Car.cs" />
-    <Compile Include="Cars\CarClass.cs" />
     <Compile Include="Cars\CarService.cs" />
-    <Compile Include="Cars\CarType.cs" />
-    <Compile Include="Cars\ICarRepository.cs" />
     <Compile Include="Cars\ICarService.cs" />
-    <Compile Include="IAggregateRoot.cs" />
-    <Compile Include="IDomainService.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="IApplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
+      <Name>Read.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

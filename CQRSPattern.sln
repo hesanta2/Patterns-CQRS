@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Domain", "Write.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Domain.Test", "Write.Domain.Test\Write.Domain.Test.csproj", "{46629094-4EE8-4751-BEA3-F0AFF344C4E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read.Domain", "Read.Domain\Read.Domain.csproj", "{F522767B-A2CD-460E-9D08-21222EBB70B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read.Application", "Read.Domain\Read.Application.csproj", "{F522767B-A2CD-460E-9D08-21222EBB70B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read.Infrastructure", "Read.Infrastructure\Read.Infrastructure.csproj", "{0F21B921-5092-46C6-8E1E-9C6E832EE796}"
 EndProject

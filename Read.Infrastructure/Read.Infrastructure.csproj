@@ -40,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Persistence\CarMemoryRepository.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
+    <Compile Include="Persistence\Cars\CarMemoryRepository.cs" />
+    <Compile Include="Persistence\Cars\Car.cs" />
+    <Compile Include="Persistence\Cars\ICarRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Read.Domain\Read.Domain.csproj">
-      <Project>{f522767b-a2cd-460e-9d08-21222ebb70b9}</Project>
-      <Name>Read.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

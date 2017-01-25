@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using Read.Infrasctructure.Persistence.Cars;
+using System.Linq;
 
-namespace Read.Domain.Cars
+namespace Read.Application.Cars
 {
-    public interface ICarService : IDomainService<Car>
+    public interface ICarService : IApplicationService<Car>
     {
         IQueryable<Car> GetByName(string name);
         IQueryable<Car> GetAll();

@@ -68,9 +68,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Read.Domain\Read.Domain.csproj">
+    <ProjectReference Include="..\Read.Domain\Read.Application.csproj">
       <Project>{f522767b-a2cd-460e-9d08-21222ebb70b9}</Project>
-      <Name>Read.Domain</Name>
+      <Name>Read.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
       <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>

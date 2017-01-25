@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Read.Domain.Cars;
+using Read.Application.Cars;
 using Microsoft.Practices.Unity;
+using Read.Infrasctructure.Persistence.Cars;
 
 namespace ConsoleApplication
 {
