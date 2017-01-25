@@ -1,6 +1,6 @@
 ﻿using Read.Application.Cars;
 using Microsoft.Practices.Unity;
-using Read.Infrasctructure.Persistence.Cars;
+using Read.Infrastructure.Persistence.Cars;
 
 namespace ConsoleApplication
 {

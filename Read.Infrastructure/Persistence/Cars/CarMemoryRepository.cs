@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Read.Infrasctructure.Persistence.Cars
+namespace Read.Infrastructure.Persistence.Cars
 {
     public class CarMemoryRepository : ICarRepository
     {
