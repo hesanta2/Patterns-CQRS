@@ -42,16 +42,21 @@
   <ItemGroup>
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
+    <Compile Include="Cars\CarCreated.cs" />
     <Compile Include="Cars\CarType.cs" />
+    <Compile Include="Cars\CreateCarCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Events\DomainEvent.cs" />
+    <Compile Include="Events\DomainEvents.cs" />
+    <Compile Include="Events\IDomainHandler.cs" />
     <Compile Include="IAggregateRoot.cs" />
+    <Compile Include="Messaging\ICommandBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mementos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

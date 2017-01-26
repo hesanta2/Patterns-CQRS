@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Write.Infrastructure.Commands
+namespace Write.Domain.Commands
 {
     public interface ICommand { }
 }

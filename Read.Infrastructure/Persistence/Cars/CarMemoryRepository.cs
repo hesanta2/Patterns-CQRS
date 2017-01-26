@@ -7,7 +7,8 @@ namespace Read.Infrastructure.Persistence.Cars
 {
     public class CarMemoryRepository : ICarRepository
     {
-        private List<Car> carMemoryList = new List<Car>()
+        [ThreadStatic]
+        private static List<Car> carMemoryList = new List<Car>()
         {
             new Car(1, CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0),
             new Car(2, CarClass.Sport, "Audi R8", 335, 2),
@@ -17,24 +18,27 @@ namespace Read.Infrastructure.Persistence.Cars
 
         public void Insert(Car entity)
         {
-            this.carMemoryList.Add(entity);
+            if (entity.Id == -1)
+                entity = new Car(carMemoryList.Count + 1, entity.Class, entity.Name, entity.MaxSpeed, entity.Doors);
+
+            carMemoryList.Add(entity);
         }
 
         public void Delete(Car entity)
         {
-            this.carMemoryList.Remove(entity);
+            carMemoryList.Remove(entity);
         }
 
         public IQueryable<Car> Get(Expression<Func<Car, bool>> predicate = null)
         {
             return predicate != null ?
-                    this.carMemoryList.AsQueryable().Where(predicate)
-                    : this.carMemoryList.AsQueryable();
+                    carMemoryList.AsQueryable().Where(predicate)
+                    : carMemoryList.AsQueryable();
         }
 
         public Car Find(object id)
         {
-            return this.carMemoryList.AsQueryable().FirstOrDefault(c => c.Id.Equals(id));
+            return carMemoryList.AsQueryable().FirstOrDefault(c => c.Id.Equals(id));
         }
 
     }

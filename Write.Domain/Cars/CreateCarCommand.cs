@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Write.Domain.Cars;
-using Write.Infrastructure.Commands;
+using Write.Domain.Commands;
 
-namespace Write.Application.Cars
+namespace Write.Domain.Cars
 {
     public class CreateCarCommand : ICommand
     {

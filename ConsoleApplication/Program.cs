@@ -3,20 +3,21 @@ using System.Linq;
 using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
-using Write.Infrastructure.Messaging;
-using Write.Application.Cars;
+using Write.Domain.Messaging;
 
 namespace ConsoleApplication
 {
     class Program
     {
-        public static ICommandBus bus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
+        private static ICommandBus bus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
+        private static ICarRepository carRepository = UnityConfigurator.UnityContainer.Resolve<ICarRepository>();
 
         static void Main(string[] args)
         {
+            ICarService carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
+
+            bus.CommandSended += Bus_CommandSended;
             Random random = new Random((int)DateTime.Now.Ticks);
-            ICarService carService =
-                UnityConfigurator.UnityContainer.Resolve<ICarService>();
 
             ConsoleKey consoleKey = ConsoleKey.A;
             while (consoleKey != ConsoleKey.Escape)
@@ -53,7 +54,7 @@ namespace ConsoleApplication
                             readerLine = System.Console.ReadLine();
                             if (!string.IsNullOrWhiteSpace(readerLine)
                                 && readerLine.ToLower() != "exit")
-                                bus.Send(new CreateCarCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
+                                bus.Send(new Write.Domain.Cars.CreateCarCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
                             cars = carService.GetAll();
                             break;
                         case ConsoleKey.D3:
@@ -75,6 +76,17 @@ namespace ConsoleApplication
 
                 System.Console.Clear();
 
+            }
+        }
+
+        private static void Bus_CommandSended(object sender, Write.Domain.Commands.ICommand command)
+        {
+            if (command.GetType().Equals(typeof(Write.Domain.Cars.CreateCarCommand)))
+            {
+                Write.Domain.Cars.CreateCarCommand command1 = (Write.Domain.Cars.CreateCarCommand)command;
+
+                Car item = new Car((CarClass)command1.CarClass, command1.Name, command1.MaxVelocity, command1.Doors);
+                carRepository.Insert(item);              
             }
         }
     }

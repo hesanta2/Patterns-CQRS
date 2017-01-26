@@ -1,4 +1,5 @@
 ﻿using System;
+using Write.Domain.Events;
 
 namespace Write.Domain.Cars
 {
