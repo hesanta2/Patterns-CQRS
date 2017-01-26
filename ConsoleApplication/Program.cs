@@ -3,11 +3,15 @@ using System.Linq;
 using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
+using Write.Infrastructure.Messaging;
+using Write.Application.Cars;
 
 namespace ConsoleApplication
 {
     class Program
     {
+        public static ICommandBus bus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
+
         static void Main(string[] args)
         {
             Random random = new Random((int)DateTime.Now.Ticks);
@@ -47,14 +51,9 @@ namespace ConsoleApplication
                         case ConsoleKey.D2:
                             System.Console.Write("\nWrite the car name to create random one ('exit' to leave): ");
                             readerLine = System.Console.ReadLine();
-                            /*if (!string.IsNullOrWhiteSpace(readerLine)
+                            if (!string.IsNullOrWhiteSpace(readerLine)
                                 && readerLine.ToLower() != "exit")
-                                carService.Insert(
-                                                    new Car((CarClass)random.Next(2),
-                                                    readerLine,
-                                                    random.Next(150, 370),
-                                                    random.Next(0, 5))
-                                                );*/
+                                bus.Send(new CreateCarCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
                             cars = carService.GetAll();
                             break;
                         case ConsoleKey.D3:

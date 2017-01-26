@@ -76,6 +76,18 @@
       <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
       <Name>Read.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Write.Application\Write.Application.csproj">
+      <Project>{a599089f-0eb7-404d-b2e3-516d758c3877}</Project>
+      <Name>Write.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
+      <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
+      <Name>Write.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Write.Infrastructure\Write.Infrastructure.csproj">
+      <Project>{24bdbbe0-2734-48d0-9fca-17788f040e45}</Project>
+      <Name>Write.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
