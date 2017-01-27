@@ -4,23 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Write.Domain.Commands;
-using Write.Domain.Messaging;
+using Write.Domain.Events;
 
 namespace Write.Infrastrucure.Messaging
 {
     public class MemoryCommandBus : ICommandBus
     {
-        public event EventHandler<ICommand> CommandSended;
-
-        private List<ICommand> commands;
+        private event EventHandler<ICommand> registerHandlers;
 
         public void Send<T>(T command) where T : ICommand
         {
-            if (this.commands == null) this.commands = new List<ICommand>();
-
-            this.commands.Add(command);
-
-            if (CommandSended != null) CommandSended(this, command);
+            if (this.registerHandlers != null)
+            {
+                this.registerHandlers(this, command);
+            }
+            else
+                throw new InvalidOperationException("No command 'Handler' registered");
         }
+
+        public void Publish<T>(T @event) where T : Event
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterHandler<T>(EventHandler<T> commandHandler) where T : ICommand
+        {
+            registerHandlers += (s, e) =>
+            {
+                if (!e.GetType().Equals(typeof(T))) return;
+
+                commandHandler(s, (T)e);
+            };
+        }
+
     }
 }

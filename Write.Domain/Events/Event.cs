@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Write.Domain.Events
 {
-    public abstract class DomainEvent
+    public abstract class Event
     {
         public DateTime Created { get; private set; }
 
-        public DomainEvent()
+        public Event()
         {
             this.Created = DateTime.Now;
         }

@@ -7,7 +7,7 @@ using Write.Domain.Events;
 
 namespace Write.Domain.Cars
 {
-    public class CarCreated : DomainEvent
+    public class CarCreated : Event
     {
         public Car Car { get; set; }
 

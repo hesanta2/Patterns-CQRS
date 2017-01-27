@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 using Write.Domain.Cars;
 using Write.Domain.Commands;
 
-namespace Write.Domain.Cars
+namespace Write.Domain.Commands
 {
-    public class CreateCarCommand : ICommand
+    public class CarCreateCommand2 : ICommand
     {
         public CarClass CarClass { get; set; }
         public string Name { get; set; }
-        public int MaxVelocity { get; set; }
+        public int MaxSpeed { get; set; }
         public int Doors { get; set; }
 
-        public CreateCarCommand(CarClass carClass, string name, int maxVelocity, int doors)
+        public CarCreateCommand2(CarClass carClass, string name, int maxVelocity, int doors)
         {
             this.CarClass = carClass;
             this.Name = name;
-            this.MaxVelocity = maxVelocity;
+            this.MaxSpeed = maxVelocity;
             this.Doors = doors;
         }
     }

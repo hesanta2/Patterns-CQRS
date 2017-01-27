@@ -2,7 +2,7 @@
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
 using Write.Infrastrucure.Messaging;
-using Write.Domain.Messaging;
+using Write.Domain.Commands;
 
 namespace ConsoleApplication
 {

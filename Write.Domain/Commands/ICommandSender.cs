@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Write.Domain.Commands;
 
-namespace Write.Domain.Messaging
+namespace Write.Domain.Commands
 {
-    public interface ICommandBus
+    public interface ICommandSender
     {
-        event EventHandler<ICommand> CommandSended;
+        void RegisterHandler<T>(EventHandler<T> commandHandler) where T : ICommand;
+
         void Send<T>(T command) where T : ICommand;
     }
 }

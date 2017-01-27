@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Write.Domain.Events
 {
-    public interface IDomainHandler<T> where T : DomainEvent
+    public interface IEventHandler<T> : IEventHandler where T : Event
     {
         void Handle(T domainEvent);
     }
 
-    public interface IDomainHandler { }
+    public interface IEventHandler { }
 }

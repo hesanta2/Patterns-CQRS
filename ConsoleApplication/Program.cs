@@ -3,20 +3,20 @@ using System.Linq;
 using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
-using Write.Domain.Messaging;
+using Write.Domain.Commands;
 
 namespace ConsoleApplication
 {
     class Program
     {
-        private static ICommandBus bus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
-        private static ICarRepository carRepository = UnityConfigurator.UnityContainer.Resolve<ICarRepository>();
+        private static ICommandBus commandBus;
+        private static ICarRepository carRepository;
+        private static ICarService carService;
 
         static void Main(string[] args)
         {
-            ICarService carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
+            InitApplication();
 
-            bus.CommandSended += Bus_CommandSended;
             Random random = new Random((int)DateTime.Now.Ticks);
 
             ConsoleKey consoleKey = ConsoleKey.A;
@@ -54,7 +54,8 @@ namespace ConsoleApplication
                             readerLine = System.Console.ReadLine();
                             if (!string.IsNullOrWhiteSpace(readerLine)
                                 && readerLine.ToLower() != "exit")
-                                bus.Send(new Write.Domain.Cars.CreateCarCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
+                                commandBus.Send(new CarCreateCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
+                            commandBus.Send(new CarCreateCommand2((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
                             cars = carService.GetAll();
                             break;
                         case ConsoleKey.D3:
@@ -79,15 +80,16 @@ namespace ConsoleApplication
             }
         }
 
-        private static void Bus_CommandSended(object sender, Write.Domain.Commands.ICommand command)
+        private static void InitApplication()
         {
-            if (command.GetType().Equals(typeof(Write.Domain.Cars.CreateCarCommand)))
-            {
-                Write.Domain.Cars.CreateCarCommand command1 = (Write.Domain.Cars.CreateCarCommand)command;
+            commandBus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
+            carRepository = UnityConfigurator.UnityContainer.Resolve<ICarRepository>();
+            carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
 
-                Car item = new Car((CarClass)command1.CarClass, command1.Name, command1.MaxVelocity, command1.Doors);
-                carRepository.Insert(item);              
-            }
+            CarCommandHandlers carCreateCommandHandlers = new CarCommandHandlers();
+
+            commandBus.RegisterHandler<CarCreateCommand>(carCreateCommandHandlers.Handle);
+            commandBus.RegisterHandler<CarCreateCommand2>(carCreateCommandHandlers.Handle);
         }
     }
 }

@@ -7,16 +7,16 @@ using System.Reflection;
 
 namespace Write.Domain.Events
 {
-    public static class DomainEvents
+    public static class Events
     {
         [ThreadStatic]
         private static List<Delegate> actions;
         [ThreadStatic]
-        private static List<IDomainHandler> handlers;
+        private static List<IEventHandler> handlers;
 
-        public static void Register(IDomainHandler domainHandler)
+        public static void Register(IEventHandler domainHandler)
         {
-            if (handlers == null) handlers = new List<IDomainHandler>();
+            if (handlers == null) handlers = new List<IEventHandler>();
 
             handlers.Add(domainHandler);
         }
@@ -28,7 +28,7 @@ namespace Write.Domain.Events
             actions.Add(callBack);
         }
 
-        public static void Raise<T>(T domainEvent) where T : DomainEvent
+        public static void Raise<T>(T domainEvent) where T : Event
         {
             if (handlers != null)
                 foreach (var handler in handlers)

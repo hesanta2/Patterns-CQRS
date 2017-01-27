@@ -42,15 +42,20 @@
   <ItemGroup>
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
+    <Compile Include="Commands\CarCreateCommand2.cs" />
     <Compile Include="Cars\CarCreated.cs" />
+    <Compile Include="Commands\CarCommandHandlers.cs" />
     <Compile Include="Cars\CarType.cs" />
-    <Compile Include="Cars\CreateCarCommand.cs" />
+    <Compile Include="Commands\CarCreateCommand.cs" />
+    <Compile Include="CommandHandlers\ICommandHandler.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Events\DomainEvent.cs" />
-    <Compile Include="Events\DomainEvents.cs" />
-    <Compile Include="Events\IDomainHandler.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\Events.cs" />
+    <Compile Include="Commands\ICommandBus.cs" />
+    <Compile Include="Events\IEventPublisher.cs" />
+    <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="IAggregateRoot.cs" />
-    <Compile Include="Messaging\ICommandBus.cs" />
+    <Compile Include="Commands\ICommandSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
