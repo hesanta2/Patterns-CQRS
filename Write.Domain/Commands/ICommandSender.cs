@@ -9,7 +9,7 @@ namespace Write.Domain.Commands
 {
     public interface ICommandSender
     {
-        void RegisterHandler<T>(EventHandler<T> commandHandler) where T : ICommand;
+        void RegisterCommandHandler<T>(EventHandler<T> commandHandler) where T : ICommand;
 
         void Send<T>(T command) where T : ICommand;
     }

@@ -1,8 +1,8 @@
 ﻿using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
-using Write.Infrastrucure.Messaging;
 using Write.Domain.Commands;
+using Write.Infrastrucure.Commands;
 
 namespace ConsoleApplication
 {
@@ -24,8 +24,9 @@ namespace ConsoleApplication
             unityContainer = new UnityContainer();
 
             unityContainer.RegisterType<ICommandBus, MemoryCommandBus>();
+
             unityContainer.RegisterType<ICarService, CarService>();
-            unityContainer.RegisterType<ICarRepository, CarMemoryRepository>();
+            unityContainer.RegisterType<ICarRepository, CarMemoryRepository>();          
         }
     }
 }

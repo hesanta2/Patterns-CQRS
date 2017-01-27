@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Write.Domain.Events
 {
-    public abstract class Event
+    public abstract class Event : IEvent
     {
-        public DateTime Created { get; private set; }
-
-        public Event()
-        {
-            this.Created = DateTime.Now;
-        }
+        public int Version { get; set; }
     }
 }

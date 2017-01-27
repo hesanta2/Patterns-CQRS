@@ -9,6 +9,7 @@ namespace Write.Domain.Events
 {
     public interface IEventPublisher
     {
-        void Publish<T>(T @event) where T : Event;
+        void RegisterEventHandler<T>(EventHandler<T> eventHandler) where T : IEvent;
+        void Publish<T>(T @event) where T : IEvent;
     }
 }

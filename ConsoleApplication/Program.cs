@@ -4,6 +4,9 @@ using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
 using Write.Domain.Commands;
+using Write.Domain;
+using Write.Infrastructure.Commands;
+using Write.Domain.Events;
 
 namespace ConsoleApplication
 {
@@ -86,10 +89,14 @@ namespace ConsoleApplication
             carRepository = UnityConfigurator.UnityContainer.Resolve<ICarRepository>();
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
 
-            CarCommandHandlers carCreateCommandHandlers = new CarCommandHandlers();
+            ICommandEventRepository commandEventRepository = new MemoryCommandEventRepository(commandBus);
 
-            commandBus.RegisterHandler<CarCreateCommand>(carCreateCommandHandlers.Handle);
-            commandBus.RegisterHandler<CarCreateCommand2>(carCreateCommandHandlers.Handle);
+            CarCommandHandlers carCreateCommandHandlers = new CarCommandHandlers(commandEventRepository);
+            commandBus.RegisterCommandHandler<CarCreateCommand>(carCreateCommandHandlers.Handle);
+            commandBus.RegisterCommandHandler<CarCreateCommand2>(carCreateCommandHandlers.Handle);
+
+            CarEventHandlers carEventHandlers = new CarEventHandlers(carRepository);
+            commandBus.RegisterEventHandler<CarCreated>(carEventHandlers.Handle);
         }
     }
 }

@@ -40,7 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messaging\MemoryCommandBus.cs" />
+    <Compile Include="Commands\MemoryCommandBus.cs" />
+    <Compile Include="Commands\MemoryCommandEventRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

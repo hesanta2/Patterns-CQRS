@@ -7,8 +7,8 @@
     <ProjectGuid>{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>Write.Domain</RootNamespace>
+    <AssemblyName>Write.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,18 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AggregateRoot.cs" />
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
     <Compile Include="Commands\CarCreateCommand2.cs" />
-    <Compile Include="Cars\CarCreated.cs" />
+    <Compile Include="Events\CarCreated.cs" />
     <Compile Include="Commands\CarCommandHandlers.cs" />
     <Compile Include="Cars\CarType.cs" />
     <Compile Include="Commands\CarCreateCommand.cs" />
     <Compile Include="CommandHandlers\ICommandHandler.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandEventRepository.cs" />
+    <Compile Include="Events\CarEventsHandlers.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
+    <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\IEventPublisher.cs" />
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="IAggregateRoot.cs" />
@@ -61,7 +65,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
+      <Name>Read.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
