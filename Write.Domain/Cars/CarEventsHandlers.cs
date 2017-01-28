@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Write.Domain.Events;
 
-namespace Write.Domain.Events
+namespace Write.Domain.Cars
 {
     public class CarEventHandlers : IEventHandler<CarCreatedEvent>
     {
@@ -18,10 +19,10 @@ namespace Write.Domain.Events
 
         public void Handle(object sender, CarCreatedEvent @event)
         {
-            Car car = new Car
+            Read.Infrastructure.Persistence.Cars.Car car = new Read.Infrastructure.Persistence.Cars.Car
                             (
                                 @event.Id,
-                                (CarClass)@event.Class,
+                                (Read.Infrastructure.Persistence.Cars.CarClass)@event.Class,
                                 @event.Name,
                                 @event.MaxSpeed,
                                 @event.Doors

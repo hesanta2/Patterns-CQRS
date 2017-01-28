@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Write.Domain.Cars;
+using Write.Domain.Events;
 
-namespace Write.Domain.Events
+namespace Write.Domain.Cars
 {
     public class CarDeletedEvent : Event
     {
