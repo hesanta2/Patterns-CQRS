@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -45,19 +49,31 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest.cs" />
+    <Compile Include="AggregateRootUnitTest.cs" />
+    <Compile Include="CarUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ForTesting\TestAggregateRoot.cs" />
+    <Compile Include="ForTesting\TestAgrregateRootCreateEvent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+      <Project>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</Project>
+      <Name>Read.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
       <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
       <Name>Write.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

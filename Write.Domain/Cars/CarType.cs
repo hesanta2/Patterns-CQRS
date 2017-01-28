@@ -11,8 +11,6 @@ namespace Write.Domain.Cars
 
         public CarType(CarClass carClass, String name, int maxSpeed, int doors)
         {
-            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("name");
-
             this.Class = carClass;
             this.Name = name;
             this.MaxSpeed = maxSpeed;

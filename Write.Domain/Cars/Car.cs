@@ -10,10 +10,14 @@ namespace Write.Domain.Cars
         public Car() { }
         public Car(int id, CarClass carClass, string name, int maxSpeed, int doors)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("name");
+
             this.ApplyChange(new CarCreatedEvent(id, carClass, name, maxSpeed, doors));
         }
         public Car(CarClass carClass, string name, int maxSpeed, int doors)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("name");
+
             this.ApplyChange(new CarCreatedEvent(0, carClass, name, maxSpeed, doors));
         }
 
