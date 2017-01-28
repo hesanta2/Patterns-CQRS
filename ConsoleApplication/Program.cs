@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using Read.Application.Cars;
+using System;
 using System.Linq;
-using Microsoft.Practices.Unity;
+using Write.Application.Cars;
+using Write.Domain.Cars;
 using Write.Domain.Commands;
 using Write.Infrastructure.Commands;
-using Write.Domain.Events;
-using Read.Application.Cars;
-using Write.Domain.Cars;
 
 namespace ConsoleApplication
 {

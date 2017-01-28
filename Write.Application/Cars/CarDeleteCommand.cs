@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Write.Domain.Commands;
 
-namespace Write.Domain.Cars
+namespace Write.Application.Cars
 {
     public class CarDeleteCommand : ICommand
     {

@@ -40,9 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cars\CarCommandHandlers.cs" />
+    <Compile Include="Cars\CarCreateCommand.cs" />
+    <Compile Include="Cars\CarDeleteCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
+      <Name>Read.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
       <Project>{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}</Project>
       <Name>Write.Domain</Name>
@@ -52,9 +59,7 @@
       <Name>Write.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Cars\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
