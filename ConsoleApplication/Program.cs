@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Linq;
-using Read.Application.Cars;
 using Microsoft.Practices.Unity;
 using Write.Domain.Commands;
 using Write.Infrastructure.Commands;
 using Write.Domain.Events;
-using Read.Infrastructure.Persistence.Cars;
+using Read.Application.Cars;
+using Write.Domain.Cars;
 
 namespace ConsoleApplication
 {
     class Program
     {
         private static ICommandBus commandBus;
-        private static ICarRepository carRepository;
+        private static Read.Infrastructure.Persistence.Cars.ICarRepository carRepository;
         private static ICarService carService;
 
         static void Main(string[] args)
@@ -35,7 +35,7 @@ namespace ConsoleApplication
                 consoleKey = System.Console.ReadKey().Key;
                 System.Console.Clear();
                 string readerLine = null;
-                IQueryable<Car> cars = carService.GetAll();
+                IQueryable<Read.Infrastructure.Persistence.Cars.Car> cars = carService.GetAll();
                 while (true)
                 {
 
@@ -56,7 +56,7 @@ namespace ConsoleApplication
                             readerLine = System.Console.ReadLine();
                             if (!string.IsNullOrWhiteSpace(readerLine)
                                 && readerLine.ToLower() != "exit")
-                                commandBus.Send(new CarCreateCommand((Write.Domain.Cars.CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
+                                commandBus.Send(new CarCreateCommand((CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
                             cars = carService.GetAll();
                             break;
                         case ConsoleKey.D3:
@@ -85,7 +85,7 @@ namespace ConsoleApplication
         private static void InitApplication()
         {
             commandBus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
-            carRepository = UnityConfigurator.UnityContainer.Resolve<ICarRepository>();
+            carRepository = UnityConfigurator.UnityContainer.Resolve<Read.Infrastructure.Persistence.Cars.ICarRepository>();
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
             ICommandEventRepository commandEventRepository = new MemoryCommandEventRepository(commandBus);
 
@@ -97,10 +97,10 @@ namespace ConsoleApplication
             commandBus.RegisterEventHandler<CarCreatedEvent>(carEventHandlers.Handle);
             commandBus.RegisterEventHandler<CarDeletedEvent>(carEventHandlers.Handle);
 
-            commandBus.Send(new CarCreateCommand(Write.Domain.Cars.CarClass.Sport | Write.Domain.Cars.CarClass.Competition, "Ferrari Formula One", 370, 0));
-            commandBus.Send(new CarCreateCommand(Write.Domain.Cars.CarClass.Sport, "Audi R8", 335, 2));
-            commandBus.Send(new CarCreateCommand(Write.Domain.Cars.CarClass.Normal | Write.Domain.Cars.CarClass.Sport, "Seat Leon FR", 260, 5));
-            commandBus.Send(new CarCreateCommand(Write.Domain.Cars.CarClass.Normal, "Seat Leon", 220, 5));
+            commandBus.Send(new CarCreateCommand(CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0));
+            commandBus.Send(new CarCreateCommand(CarClass.Sport, "Audi R8", 335, 2));
+            commandBus.Send(new CarCreateCommand(CarClass.Normal | CarClass.Sport, "Seat Leon FR", 260, 5));
+            commandBus.Send(new CarCreateCommand(CarClass.Normal, "Seat Leon", 220, 5));
         }
     }
 }

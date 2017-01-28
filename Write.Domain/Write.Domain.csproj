@@ -43,12 +43,12 @@
     <Compile Include="AggregateRoot.cs" />
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
-    <Compile Include="Commands\CarDeleteCommand.cs" />
+    <Compile Include="Cars\CarDeleteCommand.cs" />
     <Compile Include="Events\CarDeletedEvent.cs" />
     <Compile Include="Events\CarCreatedEvent.cs" />
-    <Compile Include="Commands\CarCommandHandlers.cs" />
+    <Compile Include="Cars\CarCommandHandlers.cs" />
     <Compile Include="Cars\CarType.cs" />
-    <Compile Include="Commands\CarCreateCommand.cs" />
+    <Compile Include="Cars\CarCreateCommand.cs" />
     <Compile Include="CommandHandlers\ICommandHandler.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandEventRepository.cs" />

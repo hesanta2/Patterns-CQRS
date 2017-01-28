@@ -1,8 +1,8 @@
 ﻿using Domain.CommandHandlers;
-using Write.Domain.Cars;
 using System.Linq;
+using Write.Domain.Commands;
 
-namespace Write.Domain.Commands
+namespace Write.Domain.Cars
 {
     public class CarCommandHandlers : ICommandHandler<CarCreateCommand>
     {
