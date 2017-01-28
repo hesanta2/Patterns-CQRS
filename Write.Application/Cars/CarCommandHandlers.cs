@@ -5,7 +5,7 @@ using Write.Domain.Commands;
 
 namespace Write.Application.Cars
 {
-    public class CarCommandHandlers : ICommandHandler<CarCreateCommand>
+    public class CarCommandHandlers : ICommandHandler<CarCreateCommand>, ICommandHandler<CarDeleteCommand>
     {
         private readonly ICommandEventRepository eventRepository;
         private readonly Read.Infrastructure.Persistence.Cars.ICarRepository carRepository;

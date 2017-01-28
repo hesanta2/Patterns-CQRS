@@ -4,6 +4,8 @@ using Read.Infrastructure.Persistence.Cars;
 using Write.Domain.Commands;
 using Write.Infrastrucure.Commands;
 using Write.Domain.Cars;
+using Write.Infrastructure.Commands;
+using Write.Domain.Events;
 
 namespace ConsoleApplication
 {
@@ -24,10 +26,12 @@ namespace ConsoleApplication
         {
             unityContainer = new UnityContainer();
 
-            unityContainer.RegisterType<ICommandBus, MemoryCommandBus>();
+            unityContainer.RegisterType<ICarService, CarService>(new ContainerControlledLifetimeManager());
+            unityContainer.RegisterType<ICarRepository, CarMemoryRepository>(new ContainerControlledLifetimeManager());
 
-            unityContainer.RegisterType<ICarService, CarService>();
-            unityContainer.RegisterType<ICarRepository, CarMemoryRepository>();          
+            unityContainer.RegisterType<ICommandBus, MemoryCommandBus>(new ContainerControlledLifetimeManager());
+            unityContainer.RegisterType<IEventPublisher, MemoryCommandBus>(new ContainerControlledLifetimeManager());
+            unityContainer.RegisterType<ICommandEventRepository, MemoryCommandEventRepository>(new ContainerControlledLifetimeManager());
         }
     }
 }

@@ -12,7 +12,6 @@ namespace ConsoleApplication
     class Program
     {
         private static ICommandBus commandBus;
-        private static Read.Infrastructure.Persistence.Cars.ICarRepository carRepository;
         private static ICarService carService;
 
         static void Main(string[] args)
@@ -85,9 +84,9 @@ namespace ConsoleApplication
         private static void InitApplication()
         {
             commandBus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
-            carRepository = UnityConfigurator.UnityContainer.Resolve<Read.Infrastructure.Persistence.Cars.ICarRepository>();
+            Read.Infrastructure.Persistence.Cars.ICarRepository carRepository = UnityConfigurator.UnityContainer.Resolve<Read.Infrastructure.Persistence.Cars.ICarRepository>();
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
-            ICommandEventRepository commandEventRepository = new MemoryCommandEventRepository(commandBus);
+            ICommandEventRepository commandEventRepository = UnityConfigurator.UnityContainer.Resolve<ICommandEventRepository>();
 
             CarCommandHandlers carCreateCommandHandlers = new CarCommandHandlers(carRepository, commandEventRepository);
             commandBus.RegisterCommandHandler<CarCreateCommand>(carCreateCommandHandlers.Handle);

@@ -8,7 +8,7 @@ using Write.Domain.Events;
 
 namespace Write.Domain.Cars
 {
-    public class CarEventHandlers : IEventHandler<CarCreatedEvent>
+    public class CarEventHandlers : IEventHandler<CarCreatedEvent>, IEventHandler<CarDeletedEvent>
     {
         private readonly ICarRepository carRepository;
 
