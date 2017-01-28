@@ -8,6 +8,7 @@ namespace Read.Infrastructure.Persistence
     {
         void Insert(T entity);
         void Delete(T entity);
+        void Delete(object id);
         IQueryable<T> Get(Expression<Func<T, bool>> predicate = null);
         T Find(object id);
     }

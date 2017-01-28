@@ -17,7 +17,7 @@ namespace Write.Domain
 
         void MarkChangesAsCommitted();
 
-        void LoadFromHistory(IEnumerable<IEvent> history);
+        void LoadsFromHistory(IEnumerable<IEvent> history);
 
         void ApplyChange(IEvent @event, bool isNew = true);
     }

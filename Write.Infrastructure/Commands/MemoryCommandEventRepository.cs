@@ -38,11 +38,22 @@ namespace Write.Infrastructure.Commands
 
                 this.eventPublisher.Publish(@event);
             }
+
+            aggregate.MarkChangesAsCommitted();
         }
 
-        public IAggregateRoot GetById(object id)
+        public T GetById<T>(object id) where T : IAggregateRoot
         {
-            return null;
+            T aggregate = (T)Activator.CreateInstance(typeof(T)); ;
+
+            List<IEvent> aggregateEvents;
+            if (aggregateEventsDictonary.TryGetValue(id, out aggregateEvents))
+            {
+                aggregate.LoadsFromHistory(aggregateEvents);
+                return aggregate;
+            }
+
+            return default(T);
         }
 
 

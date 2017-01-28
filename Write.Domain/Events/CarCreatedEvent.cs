@@ -7,7 +7,7 @@ using Write.Domain.Cars;
 
 namespace Write.Domain.Events
 {
-    public class CarCreated : Event
+    public class CarCreatedEvent : Event
     {
         public int Id { get; }
         public CarClass Class { get; }
@@ -15,7 +15,7 @@ namespace Write.Domain.Events
         public int MaxSpeed { get; }
         public int Doors { get; }
 
-        public CarCreated(int id, CarClass carClass, string name, int maxSpeed, int doors)
+        public CarCreatedEvent(int id, CarClass carClass, string name, int maxSpeed, int doors)
         {
             this.Id = id;
             this.Class = carClass;

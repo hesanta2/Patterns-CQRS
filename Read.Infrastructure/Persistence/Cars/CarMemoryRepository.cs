@@ -10,10 +10,6 @@ namespace Read.Infrastructure.Persistence.Cars
         [ThreadStatic]
         private static List<Car> carMemoryList = new List<Car>()
         {
-            new Car(1, CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0),
-            new Car(2, CarClass.Sport, "Audi R8", 335, 2),
-            new Car(4, CarClass.Normal | CarClass.Sport, "Seat Leon FR", 260, 5),
-            new Car(3, CarClass.Normal, "Seat Leon", 220, 5)
         };
 
         public void Insert(Car entity)
@@ -27,6 +23,11 @@ namespace Read.Infrastructure.Persistence.Cars
         public void Delete(Car entity)
         {
             carMemoryList.Remove(entity);
+        }
+
+        public void Delete(object id)
+        {
+            carMemoryList.Remove(this.Find(id));
         }
 
         public IQueryable<Car> Get(Expression<Func<Car, bool>> predicate = null)

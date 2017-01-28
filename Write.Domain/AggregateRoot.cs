@@ -22,10 +22,10 @@ namespace Write.Domain
             return this.eventChanges;
         }
 
-        public void LoadFromHistory(IEnumerable<IEvent> history)
+        public void LoadsFromHistory(IEnumerable<IEvent> history)
         {
             foreach (var @event in history)
-                this.ApplyChange(@event);
+                this.ApplyChange(@event, false);
         }
 
         public void MarkChangesAsCommitted()
@@ -36,10 +36,8 @@ namespace Write.Domain
         public void ApplyChange(IEvent @event, bool isNew = true)
         {
             var method = this.GetType().GetMethod("Apply", BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { @event.GetType() }, null);
-            if (method == null)
-                throw new InvalidOperationException($"Can't apply changes for '{@event}' event. Missing Aggregate.Apply({@event}) method?");
-
-            method.Invoke(this, new object[] { @event });
+            if (method != null)
+                method.Invoke(this, new object[] { @event });
 
             if (isNew) this.eventChanges.Add(@event);
         }

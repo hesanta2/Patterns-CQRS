@@ -43,8 +43,9 @@
     <Compile Include="AggregateRoot.cs" />
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
-    <Compile Include="Commands\CarCreateCommand2.cs" />
-    <Compile Include="Events\CarCreated.cs" />
+    <Compile Include="Commands\CarDeleteCommand.cs" />
+    <Compile Include="Events\CarDeletedEvent.cs" />
+    <Compile Include="Events\CarCreatedEvent.cs" />
     <Compile Include="Commands\CarCommandHandlers.cs" />
     <Compile Include="Cars\CarType.cs" />
     <Compile Include="Commands\CarCreateCommand.cs" />
@@ -67,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
-      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
+      <Project>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</Project>
       <Name>Read.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>

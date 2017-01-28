@@ -3,6 +3,7 @@ using Microsoft.Practices.Unity;
 using Read.Infrastructure.Persistence.Cars;
 using Write.Domain.Commands;
 using Write.Infrastrucure.Commands;
+using Write.Domain.Cars;
 
 namespace ConsoleApplication
 {

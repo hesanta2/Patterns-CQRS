@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Write.Domain.Events
 {
-    public class CarEventHandlers : IEventHandler<CarCreated>
+    public class CarEventHandlers : IEventHandler<CarCreatedEvent>
     {
         private readonly ICarRepository carRepository;
 
@@ -16,17 +16,22 @@ namespace Write.Domain.Events
             this.carRepository = carRepository;
         }
 
-        public void Handle(object sender, CarCreated @event)
+        public void Handle(object sender, CarCreatedEvent @event)
         {
             Car car = new Car
                             (
-                                @event.Id == 0 ? carRepository.Get().Count() + 1 : @event.Id,
+                                @event.Id,
                                 (CarClass)@event.Class,
                                 @event.Name,
                                 @event.MaxSpeed,
                                 @event.Doors
                             );
             this.carRepository.Insert(car);
+        }
+
+        public void Handle(object sender, CarDeletedEvent @event)
+        {
+            this.carRepository.Delete(@event.AggregateId);
         }
 
     }
