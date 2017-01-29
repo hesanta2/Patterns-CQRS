@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Write.Domain.Events
 {
-    public interface IEventHandler<T> : IEventHandler where T : IEvent
+    public interface IEventHandlerFactory
     {
-        void Handle(T @event);
+        IEnumerable<IEventHandler<T>> GetHandlers<T>() where T : Event;
     }
-
-    public interface IEventHandler { }
 }

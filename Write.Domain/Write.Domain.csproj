@@ -46,13 +46,15 @@
     <Compile Include="Cars\CarDeletedEvent.cs" />
     <Compile Include="Cars\CarCreatedEvent.cs" />
     <Compile Include="Cars\CarType.cs" />
-    <Compile Include="CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandEventRepository.cs" />
     <Compile Include="Cars\CarEventsHandlers.cs" />
+    <Compile Include="Commands\ICommandHandlerFactory.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Commands\ICommandBus.cs" />
     <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IEventHandlerFactory.cs" />
     <Compile Include="Events\IEventPublisher.cs" />
     <Compile Include="Events\IEventHandler.cs" />
     <Compile Include="IAggregateRoot.cs" />

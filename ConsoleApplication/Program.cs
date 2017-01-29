@@ -88,13 +88,8 @@ namespace ConsoleApplication
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
             ICommandEventRepository commandEventRepository = UnityConfigurator.UnityContainer.Resolve<ICommandEventRepository>();
 
-            CarCommandHandlers carCreateCommandHandlers = new CarCommandHandlers(carRepository, commandEventRepository);
-            commandBus.RegisterCommandHandler<CarCreateCommand>(carCreateCommandHandlers.Handle);
-            commandBus.RegisterCommandHandler<CarDeleteCommand>(carCreateCommandHandlers.Handle);
-
-            CarEventHandlers carEventHandlers = new CarEventHandlers(carRepository);
-            commandBus.RegisterEventHandler<CarCreatedEvent>(carEventHandlers.Handle);
-            commandBus.RegisterEventHandler<CarDeletedEvent>(carEventHandlers.Handle);
+            commandBus.RegisterCommandHandlers(new CarCommandHandlers(carRepository, commandEventRepository));
+            commandBus.RegisterEventHandlers(new CarEventHandlers(carRepository));
 
             commandBus.Send(new CarCreateCommand(CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0));
             commandBus.Send(new CarCreateCommand(CarClass.Sport, "Audi R8", 335, 2));

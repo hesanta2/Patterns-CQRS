@@ -17,7 +17,7 @@ namespace Write.Domain.Cars
             this.carRepository = carRepository;
         }
 
-        public void Handle(object sender, CarCreatedEvent @event)
+        public void Handle(CarCreatedEvent @event)
         {
             Read.Infrastructure.Persistence.Cars.Car car = new Read.Infrastructure.Persistence.Cars.Car
                             (
@@ -30,7 +30,7 @@ namespace Write.Domain.Cars
             this.carRepository.Insert(car);
         }
 
-        public void Handle(object sender, CarDeletedEvent @event)
+        public void Handle(CarDeletedEvent @event)
         {
             this.carRepository.Delete(@event.AggregateId);
         }

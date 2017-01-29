@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Commands;
 
 namespace Write.Domain.Commands
 {
-    public interface ICommandSender
+    public interface ICommandHandlerFactory
     {
-        void RegisterCommandHandlers(ICommandHandler commandHandler);
-        void Send<T>(T command) where T : ICommand;
+        ICommandHandler<T> GetHandler<T>() where T : ICommand;
     }
 }

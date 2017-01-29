@@ -29,8 +29,8 @@ namespace ConsoleApplication
             unityContainer.RegisterType<ICarService, CarService>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<ICarRepository, CarMemoryRepository>(new ContainerControlledLifetimeManager());
 
-            unityContainer.RegisterType<ICommandBus, MemoryCommandBus>(new ContainerControlledLifetimeManager());
-            unityContainer.RegisterType<IEventPublisher, MemoryCommandBus>(new ContainerControlledLifetimeManager());
+            unityContainer.RegisterType<ICommandBus, CommandBus>(new ContainerControlledLifetimeManager());
+            unityContainer.RegisterType<IEventPublisher, CommandBus>(new ContainerControlledLifetimeManager());
             unityContainer.RegisterType<ICommandEventRepository, MemoryCommandEventRepository>(new ContainerControlledLifetimeManager());
         }
     }

@@ -89,7 +89,7 @@ namespace Domain.Test
 
             CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);
             CarCreatedEvent @event = new CarCreatedEvent(1, Write.Domain.Cars.CarClass.Normal, "Car", 200, 5);
-            eventHandlers.Handle(this, @event);
+            eventHandlers.Handle(@event);
 
             carRepository.VerifyAllExpectations();
         }
@@ -103,7 +103,7 @@ namespace Domain.Test
 
             CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);
             CarDeletedEvent @event = new CarDeletedEvent(1);
-            eventHandlers.Handle(this, @event);
+            eventHandlers.Handle(@event);
 
             carRepository.VerifyAllExpectations();
         }
