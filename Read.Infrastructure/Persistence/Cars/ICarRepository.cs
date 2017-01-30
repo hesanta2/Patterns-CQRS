@@ -1,6 +1,6 @@
-﻿using Read.Infrastructure.Persistence;
+﻿using CQRS.Read.Infrastructure.Persistence;
 
-namespace Read.Infrastructure.Persistence.Cars
+namespace CQRS.Read.Infrastructure.Persistence.Cars
 {
     public interface ICarRepository : IRepository<Car> { }
 }

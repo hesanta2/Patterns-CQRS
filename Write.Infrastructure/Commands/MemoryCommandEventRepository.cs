@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain;
-using Write.Domain.Commands;
-using Write.Domain.Events;
+using CQRS.Write.Domain;
+using CQRS.Write.Domain.Commands;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Infrastructure.Commands
+namespace CQRS.Write.Infrastructure.Commands
 {
     public class MemoryCommandEventRepository : ICommandEventRepository
     {

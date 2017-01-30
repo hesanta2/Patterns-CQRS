@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain
+namespace CQRS.Write.Domain
 {
     public interface IAggregateRoot<T> : IAggregateRoot
     {

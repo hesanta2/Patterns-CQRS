@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Read.Infrastructure.Persistence
+namespace CQRS.Read.Infrastructure.Persistence
 {
     public interface IRepository<T>
     {

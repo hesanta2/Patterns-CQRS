@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Write.Domain;
+using CQRS.Write.Domain;
 using System.Collections.Generic;
-using Write.Domain.Events;
-using Domain.Test.ForTesting;
+using CQRS.Write.Domain.Events;
+using CQRS.Write.Domain.Test.ForTesting;
 
-namespace Domain.Test
+namespace CQRS.Write.Domain.Test
 {
     [TestClass]
     public class AggregateRootUnitTest

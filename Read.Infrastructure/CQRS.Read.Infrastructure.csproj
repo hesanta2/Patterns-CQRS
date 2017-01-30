@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}</ProjectGuid>
+    <ProjectGuid>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Write.Domain</RootNamespace>
-    <AssemblyName>Write.Domain</AssemblyName>
+    <RootNamespace>CQRS.Read.Infrastructure</RootNamespace>
+    <AssemblyName>CQRS.Read.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,35 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateRoot.cs" />
-    <Compile Include="Cars\Car.cs" />
-    <Compile Include="Cars\CarClass.cs" />
-    <Compile Include="Cars\CarDeletedEvent.cs" />
-    <Compile Include="Cars\CarCreatedEvent.cs" />
-    <Compile Include="Cars\CarType.cs" />
-    <Compile Include="Commands\ICommandHandler.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\ICommandEventRepository.cs" />
-    <Compile Include="Cars\CarEventsHandlers.cs" />
-    <Compile Include="Commands\ICommandHandlerFactory.cs" />
-    <Compile Include="Events\Event.cs" />
-    <Compile Include="Commands\ICommandBus.cs" />
-    <Compile Include="Events\IEvent.cs" />
-    <Compile Include="Events\IEventHandlerFactory.cs" />
-    <Compile Include="Events\IEventPublisher.cs" />
-    <Compile Include="Events\IEventHandler.cs" />
-    <Compile Include="IAggregateRoot.cs" />
-    <Compile Include="Commands\ICommandSender.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
+    <Compile Include="Persistence\Cars\CarMemoryRepository.cs" />
+    <Compile Include="Persistence\Cars\Car.cs" />
+    <Compile Include="Persistence\Cars\ICarRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
-      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
-      <Name>Read.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

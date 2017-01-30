@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Commands;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Commands;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Infrastrucure.Commands
+namespace CQRS.Write.Infrastructure.Commands
 {
     public class CommandBus : ICommandBus
     {

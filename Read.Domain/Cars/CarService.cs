@@ -1,7 +1,7 @@
-﻿using Read.Infrastructure.Persistence.Cars;
+﻿using CQRS.Read.Infrastructure.Persistence.Cars;
 using System.Linq;
 
-namespace Read.Application.Cars
+namespace CQRS.Read.Application.Cars
 {
     public class CarService : ICarService
     {

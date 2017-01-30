@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Read.Infrastructure.Persistence.Cars
+namespace CQRS.Read.Infrastructure.Persistence.Cars
 {
     [Flags]
     public enum CarClass

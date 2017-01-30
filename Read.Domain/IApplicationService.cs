@@ -1,4 +1,4 @@
-﻿namespace Read.Application
+﻿namespace CQRS.Read.Application
 {
     public interface IApplicationService<T> { }
 }

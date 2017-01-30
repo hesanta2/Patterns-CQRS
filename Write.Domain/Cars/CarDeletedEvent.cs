@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Cars;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Cars;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain.Cars
+namespace CQRS.Write.Domain.Cars
 {
     public class CarDeletedEvent : Event
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Write.Domain;
-using Write.Domain.Cars;
+using CQRS.Write.Domain;
+using CQRS.Write.Domain.Cars;
 using Rhino.Mocks;
 
-namespace Domain.Test
+namespace CQRS.Write.Domain.Test
 {
     [TestClass]
     public class CarUnitTest
@@ -83,12 +83,12 @@ namespace Domain.Test
         [TestMethod]
         public void CarAggregate_CarEventHandlers_Handle_CarCreatedEvent_VerifyAllExpectations()
         {
-            Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
-                = MockRepository.GenerateMock<Read.Infrastructure.Persistence.Cars.ICarRepository>();
+            CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
+                = MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>();
             carRepository.Expect(c => c.Insert(null)).IgnoreArguments();
 
             CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);
-            CarCreatedEvent @event = new CarCreatedEvent(1, Write.Domain.Cars.CarClass.Normal, "Car", 200, 5);
+            CarCreatedEvent @event = new CarCreatedEvent(1, CQRS.Write.Domain.Cars.CarClass.Normal, "Car", 200, 5);
             eventHandlers.Handle(@event);
 
             carRepository.VerifyAllExpectations();
@@ -97,8 +97,8 @@ namespace Domain.Test
         [TestMethod]
         public void CarAggregate_CarEventHandlers_Handle_CarDeletedEvent_VerifyAllExpectations()
         {
-            Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
-                = MockRepository.GenerateMock<Read.Infrastructure.Persistence.Cars.ICarRepository>();
+            CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
+                = MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>();
             carRepository.Expect(c => c.Delete(1)).IgnoreArguments();
 
             CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);

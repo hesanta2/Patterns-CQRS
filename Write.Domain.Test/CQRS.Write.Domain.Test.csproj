@@ -6,8 +6,8 @@
     <ProjectGuid>{46629094-4EE8-4751-BEA3-F0AFF344C4E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.Test</RootNamespace>
-    <AssemblyName>Domain.Test</AssemblyName>
+    <RootNamespace>CQRS.Domain.Test</RootNamespace>
+    <AssemblyName>CQRS.Domain.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,13 +63,13 @@
     <Compile Include="ForTesting\TestAgrregateRootCreateEvent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+    <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
       <Project>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</Project>
-      <Name>Read.Infrastructure</Name>
+      <Name>CQRS.Read.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
+    <ProjectReference Include="..\Write.Domain\CQRS.Write.Domain.csproj">
       <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
-      <Name>Write.Domain</Name>
+      <Name>CQRS.Write.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
