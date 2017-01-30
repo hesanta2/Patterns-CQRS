@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain;
+using CQRS.Write.Domain;
 
-namespace Domain.Test.ForTesting
+namespace CQRS.Write.Domain.Test.ForTesting
 {
     public class TestAggregateRoot : AggregateRoot<int>
     {

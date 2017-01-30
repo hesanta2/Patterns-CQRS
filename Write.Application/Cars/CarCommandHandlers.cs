@@ -1,17 +1,17 @@
 ﻿using System.Linq;
-using Write.Domain.Cars;
-using Write.Domain.Commands;
+using CQRS.Write.Domain.Cars;
+using CQRS.Write.Domain.Commands;
 using System;
 using Domain.Command;
 
-namespace Write.Application.Cars
+namespace CQRS.Write.Application.Cars
 {
     public class CarCommandHandlers : ICommandHandler<CarCreateCommand>, ICommandHandler<CarDeleteCommand>, ICommandHandler
     {
         private readonly ICommandEventRepository eventRepository;
-        private readonly Read.Infrastructure.Persistence.Cars.ICarRepository carRepository;
+        private readonly CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository;
 
-        public CarCommandHandlers(Read.Infrastructure.Persistence.Cars.ICarRepository carRepository, ICommandEventRepository eventRepository)
+        public CarCommandHandlers(CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository, ICommandEventRepository eventRepository)
         {
             this.eventRepository = eventRepository;
             this.carRepository = carRepository;

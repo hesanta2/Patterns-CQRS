@@ -5,17 +5,17 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{4762D73F-CA62-4CDA-83CB-5068577209EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Domain", "Write.Domain\Write.Domain.csproj", "{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Write.Domain", "Write.Domain\CQRS.Write.Domain.csproj", "{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Domain.Test", "Write.Domain.Test\Write.Domain.Test.csproj", "{46629094-4EE8-4751-BEA3-F0AFF344C4E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Write.Domain.Test", "Write.Domain.Test\CQRS.Write.Domain.Test.csproj", "{46629094-4EE8-4751-BEA3-F0AFF344C4E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read.Application", "Read.Domain\Read.Application.csproj", "{F522767B-A2CD-460E-9D08-21222EBB70B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Read.Application", "Read.Domain\CQRS.Read.Application.csproj", "{F522767B-A2CD-460E-9D08-21222EBB70B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Read.Infrastructure", "Read.Infrastructure\Read.Infrastructure.csproj", "{0F21B921-5092-46C6-8E1E-9C6E832EE796}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Read.Infrastructure", "Read.Infrastructure\CQRS.Read.Infrastructure.csproj", "{0F21B921-5092-46C6-8E1E-9C6E832EE796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Infrastructure", "Write.Infrastructure\Write.Infrastructure.csproj", "{24BDBBE0-2734-48D0-9FCA-17788F040E45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Write.Infrastructure", "Write.Infrastructure\CQRS.Write.Infrastructure.csproj", "{24BDBBE0-2734-48D0-9FCA-17788F040E45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Write.Application", "Write.Application\Write.Application.csproj", "{A599089F-0EB7-404D-B2E3-516D758C3877}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Write.Application", "Write.Application\CQRS.Write.Application.csproj", "{A599089F-0EB7-404D-B2E3-516D758C3877}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Read", "Read", "{A2D11453-06D2-46E7-B725-F2CEACF0704E}"
 EndProject

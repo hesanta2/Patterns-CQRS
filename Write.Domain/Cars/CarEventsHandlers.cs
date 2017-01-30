@@ -1,12 +1,12 @@
-﻿using Read.Infrastructure.Persistence.Cars;
+﻿using CQRS.Read.Infrastructure.Persistence.Cars;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain.Cars
+namespace CQRS.Write.Domain.Cars
 {
     public class CarEventHandlers : IEventHandler<CarCreatedEvent>, IEventHandler<CarDeletedEvent>
     {
@@ -19,10 +19,10 @@ namespace Write.Domain.Cars
 
         public void Handle(CarCreatedEvent @event)
         {
-            Read.Infrastructure.Persistence.Cars.Car car = new Read.Infrastructure.Persistence.Cars.Car
+            CQRS.Read.Infrastructure.Persistence.Cars.Car car = new CQRS.Read.Infrastructure.Persistence.Cars.Car
                             (
                                 @event.Id,
-                                (Read.Infrastructure.Persistence.Cars.CarClass)@event.Class,
+                                (CQRS.Read.Infrastructure.Persistence.Cars.CarClass)@event.Class,
                                 @event.Name,
                                 @event.MaxSpeed,
                                 @event.Doors

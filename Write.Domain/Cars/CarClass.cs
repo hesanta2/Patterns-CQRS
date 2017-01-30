@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Write.Domain.Cars
+namespace CQRS.Write.Domain.Cars
 {
     [Flags]
     public enum CarClass

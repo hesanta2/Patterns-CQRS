@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A599089F-0EB7-404D-B2E3-516D758C3877}</ProjectGuid>
+    <ProjectGuid>{24BDBBE0-2734-48D0-9FCA-17788F040E45}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Write.Application</RootNamespace>
-    <AssemblyName>Write.Application</AssemblyName>
+    <RootNamespace>CQRS.Write.Infrastructure</RootNamespace>
+    <AssemblyName>CQRS.Write.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,26 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cars\CarCommandHandlers.cs" />
-    <Compile Include="Cars\CarCreateCommand.cs" />
-    <Compile Include="Cars\CarDeleteCommand.cs" />
+    <Compile Include="Commands\CommandBus.cs" />
+    <Compile Include="Commands\MemoryCommandEventRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
-      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
-      <Name>Read.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
-      <Project>{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}</Project>
-      <Name>Write.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Write.Infrastructure\Write.Infrastructure.csproj">
-      <Project>{24bdbbe0-2734-48d0-9fca-17788f040e45}</Project>
-      <Name>Write.Infrastructure</Name>
+    <ProjectReference Include="..\Write.Domain\CQRS.Write.Domain.csproj">
+      <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
+      <Name>CQRS.Write.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

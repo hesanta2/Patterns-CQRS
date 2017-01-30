@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</ProjectGuid>
+    <ProjectGuid>{A599089F-0EB7-404D-B2E3-516D758C3877}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Read.Infrastructure</RootNamespace>
-    <AssemblyName>Read.Infrastructure</AssemblyName>
+    <RootNamespace>CQRS.Write.Application</RootNamespace>
+    <AssemblyName>CQRS.Write.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,12 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Persistence\IRepository.cs" />
-    <Compile Include="Persistence\Cars\CarMemoryRepository.cs" />
-    <Compile Include="Persistence\Cars\Car.cs" />
-    <Compile Include="Persistence\Cars\ICarRepository.cs" />
+    <Compile Include="Cars\CarCommandHandlers.cs" />
+    <Compile Include="Cars\CarCreateCommand.cs" />
+    <Compile Include="Cars\CarDeleteCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
+      <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
+      <Name>CQRS.Read.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Write.Domain\CQRS.Write.Domain.csproj">
+      <Project>{B2C299CF-2262-4A05-836A-82BB0C6BAAC5}</Project>
+      <Name>CQRS.Write.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Write.Infrastructure\CQRS.Write.Infrastructure.csproj">
+      <Project>{24bdbbe0-2734-48d0-9fca-17788f040e45}</Project>
+      <Name>CQRS.Write.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

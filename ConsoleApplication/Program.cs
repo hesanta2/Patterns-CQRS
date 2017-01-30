@@ -1,11 +1,10 @@
 ﻿using Microsoft.Practices.Unity;
-using Read.Application.Cars;
+using CQRS.Read.Application.Cars;
 using System;
 using System.Linq;
-using Write.Application.Cars;
-using Write.Domain.Cars;
-using Write.Domain.Commands;
-using Write.Infrastructure.Commands;
+using CQRS.Write.Application.Cars;
+using CQRS.Write.Domain.Cars;
+using CQRS.Write.Domain.Commands;
 
 namespace ConsoleApplication
 {
@@ -34,7 +33,7 @@ namespace ConsoleApplication
                 consoleKey = System.Console.ReadKey().Key;
                 System.Console.Clear();
                 string readerLine = null;
-                IQueryable<Read.Infrastructure.Persistence.Cars.Car> cars = carService.GetAll();
+                IQueryable<CQRS.Read.Infrastructure.Persistence.Cars.Car> cars = carService.GetAll();
                 while (true)
                 {
 
@@ -84,7 +83,7 @@ namespace ConsoleApplication
         private static void InitApplication()
         {
             commandBus = UnityConfigurator.UnityContainer.Resolve<ICommandBus>();
-            Read.Infrastructure.Persistence.Cars.ICarRepository carRepository = UnityConfigurator.UnityContainer.Resolve<Read.Infrastructure.Persistence.Cars.ICarRepository>();
+            CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository = UnityConfigurator.UnityContainer.Resolve<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>();
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
             ICommandEventRepository commandEventRepository = UnityConfigurator.UnityContainer.Resolve<ICommandEventRepository>();
 

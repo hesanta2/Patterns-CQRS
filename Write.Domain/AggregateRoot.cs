@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain
+namespace CQRS.Write.Domain
 {
     public class AggregateRoot<T> : IAggregateRoot<T>
     {

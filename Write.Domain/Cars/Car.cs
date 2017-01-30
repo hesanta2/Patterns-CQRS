@@ -1,7 +1,7 @@
 ﻿using System;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain.Cars
+namespace CQRS.Write.Domain.Cars
 {
     public class Car : AggregateRoot<int>
     {

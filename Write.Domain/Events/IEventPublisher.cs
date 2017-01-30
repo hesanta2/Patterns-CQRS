@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Commands;
+using CQRS.Write.Domain.Commands;
 
-namespace Write.Domain.Events
+namespace CQRS.Write.Domain.Events
 {
     public interface IEventPublisher
     {

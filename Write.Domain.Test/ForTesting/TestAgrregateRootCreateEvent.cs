@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Events;
+using CQRS.Write.Domain.Events;
 
-namespace Domain.Test.ForTesting
+namespace CQRS.Write.Domain.Test.ForTesting
 {
     public class TestAgrregateRootCreateEvent : Event
     {

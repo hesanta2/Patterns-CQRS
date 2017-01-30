@@ -1,8 +1,8 @@
 ﻿using System;
-using Write.Domain;
-using Write.Domain.Events;
+using CQRS.Write.Domain;
+using CQRS.Write.Domain.Events;
 
-namespace Write.Domain.Commands
+namespace CQRS.Write.Domain.Commands
 {
     public interface ICommandEventRepository
     {

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Write.Domain.Cars;
-using Write.Domain.Commands;
+using CQRS.Write.Domain.Cars;
+using CQRS.Write.Domain.Commands;
 
-namespace Write.Application.Cars
+namespace CQRS.Write.Application.Cars
 {
     public class CarCreateCommand : ICommand
     {

@@ -68,25 +68,25 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Read.Domain\Read.Application.csproj">
+    <ProjectReference Include="..\Read.Domain\CQRS.Read.Application.csproj">
       <Project>{f522767b-a2cd-460e-9d08-21222ebb70b9}</Project>
-      <Name>Read.Application</Name>
+      <Name>CQRS.Read.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Read.Infrastructure\Read.Infrastructure.csproj">
+    <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
       <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
-      <Name>Read.Infrastructure</Name>
+      <Name>CQRS.Read.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Write.Application\Write.Application.csproj">
+    <ProjectReference Include="..\Write.Application\CQRS.Write.Application.csproj">
       <Project>{a599089f-0eb7-404d-b2e3-516d758c3877}</Project>
-      <Name>Write.Application</Name>
+      <Name>CQRS.Write.Application</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Write.Domain\Write.Domain.csproj">
+    <ProjectReference Include="..\Write.Domain\CQRS.Write.Domain.csproj">
       <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
-      <Name>Write.Domain</Name>
+      <Name>CQRS.Write.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Write.Infrastructure\Write.Infrastructure.csproj">
+    <ProjectReference Include="..\Write.Infrastructure\CQRS.Write.Infrastructure.csproj">
       <Project>{24bdbbe0-2734-48d0-9fca-17788f040e45}</Project>
-      <Name>Write.Infrastructure</Name>
+      <Name>CQRS.Write.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
