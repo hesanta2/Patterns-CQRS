@@ -18,9 +18,9 @@ namespace CQRS.ViewerMonitor.Controllers
         }
 
         // GET api/demo/5 
-        public IAggregateRoot Get(int id)
+        public IEnumerable<object> Get(int id)
         {
-            return Initiator.CommandEventRepository.GetById<Car>(id);
+            return Initiator.CommandEventRepository.GetEvents(id);
         }
 
         // POST api/demo 

@@ -42,7 +42,7 @@ namespace CQRS.Write.Infrastructure.Commands
             aggregate.MarkChangesAsCommitted();
         }
 
-        public T GetById<T>(object id) where T : IAggregateRoot
+        public T GetByCommandId<T>(object id) where T : IAggregateRoot
         {
             T aggregate = (T)Activator.CreateInstance(typeof(T)); ;
 
@@ -54,6 +54,16 @@ namespace CQRS.Write.Infrastructure.Commands
             }
 
             return default(T);
+        }
+
+
+        public IEnumerable<IEvent> GetEvents(object id)
+        {
+            List<IEvent> aggregateEvents;
+            if (aggregateEventsDictonary.TryGetValue(id, out aggregateEvents))
+                return aggregateEvents;
+
+            return new List<IEvent>();
         }
 
 

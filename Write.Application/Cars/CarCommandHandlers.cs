@@ -27,7 +27,7 @@ namespace CQRS.Write.Application.Cars
 
         public void Handle(CarDeleteCommand command)
         {
-            Car item = this.eventRepository.GetById<Car>(command.Id);
+            Car item = this.eventRepository.GetByCommandId<Car>(command.Id);
             item.Delete();
             this.eventRepository.Save(item);
         }
