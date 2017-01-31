@@ -28,7 +28,7 @@ namespace CQRS.Write.Application.Cars
 
         public void Handle(CarRenameCommand command)
         {
-            Car item = this.eventRepository.GetById<Car>(command.Id);
+            Car item = this.eventRepository.GetByCommandId<Car>(command.Id);
             item.Rename(command.Name);
             this.eventRepository.Save(item);
         }

@@ -40,7 +40,7 @@ namespace CQRS.Write.Domain.Cars
         }
         private void Apply(CarCreatedEvent @event)
         {
-            this.Id = @event.Id;
+            this.Id = @event.AggregateId;
             this.CarType = new CarType(@event.Class, @event.Name, @event.MaxSpeed, @event.Doors);
         }
         #endregion

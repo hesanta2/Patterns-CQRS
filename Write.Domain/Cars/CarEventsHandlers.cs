@@ -23,7 +23,7 @@ namespace CQRS.Write.Domain.Cars
         {
             CQRS.Read.Infrastructure.Persistence.Cars.Car car = new CQRS.Read.Infrastructure.Persistence.Cars.Car
                             (
-                                @event.Id,
+                                @event.AggregateId,
                                 (CQRS.Read.Infrastructure.Persistence.Cars.CarClass)@event.Class,
                                 @event.Name,
                                 @event.MaxSpeed,

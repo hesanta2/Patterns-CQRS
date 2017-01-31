@@ -9,7 +9,6 @@ namespace CQRS.Write.Domain.Cars
 {
     public class CarRenamedEvent : Event
     {
-        public int AggregateId { get; }
         public string Name { get; }
 
         public CarRenamedEvent(int aggregateId, string name) : base()

@@ -9,15 +9,14 @@ namespace CQRS.Write.Domain.Cars
 {
     public class CarCreatedEvent : Event
     {
-        public int Id { get; }
         public CarClass Class { get; }
         public string Name { get; }
         public int MaxSpeed { get; }
         public int Doors { get; }
 
-        public CarCreatedEvent(int id, CarClass carClass, string name, int maxSpeed, int doors) : base()
+        public CarCreatedEvent(int aggregateId, CarClass carClass, string name, int maxSpeed, int doors) : base()
         {
-            this.Id = id;
+            this.AggregateId = aggregateId;
             this.Class = carClass;
             this.Name = name;
             this.MaxSpeed = maxSpeed;
