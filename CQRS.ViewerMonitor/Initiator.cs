@@ -35,6 +35,7 @@ namespace CQRS.ViewerMonitor
             {
                 var webApiConfiguration = ConfigureWebApi();
                 app.UseWebApi(webApiConfiguration);
+                app.UseNancy();
             }
 
 
