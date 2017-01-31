@@ -12,7 +12,7 @@ namespace CQRS.Write.Domain.Commands
         {
             get
             {
-                return this.GetType().BaseType.Name;
+                return this.GetType().Name;
             }
         }
     }
