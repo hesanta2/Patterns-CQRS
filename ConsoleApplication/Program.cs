@@ -90,6 +90,8 @@ namespace ConsoleApplication
             commandBus.RegisterCommandHandlers(new CarCommandHandlers(carRepository, commandEventRepository));
             commandBus.RegisterEventHandlers(new CarEventHandlers(carRepository));
 
+            CQRS.ViewerMonitor.Initiator.InitializeMonitor(commandEventRepository);
+
             commandBus.Send(new CarCreateCommand(CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0));
             commandBus.Send(new CarCreateCommand(CarClass.Sport, "Audi R8", 335, 2));
             commandBus.Send(new CarCreateCommand(CarClass.Normal | CarClass.Sport, "Seat Leon FR", 260, 5));

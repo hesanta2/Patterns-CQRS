@@ -51,6 +51,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +71,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CQRS.ViewerMonitor\CQRS.ViewerMonitor.csproj">
+      <Project>{dae17ee8-8eab-4936-900d-c997bc8249c3}</Project>
+      <Name>CQRS.ViewerMonitor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Read.Domain\CQRS.Read.Application.csproj">
       <Project>{f522767b-a2cd-460e-9d08-21222ebb70b9}</Project>
       <Name>CQRS.Read.Application</Name>
