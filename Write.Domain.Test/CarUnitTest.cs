@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CQRS.Write.Domain;
 using CQRS.Write.Domain.Cars;
 using Rhino.Mocks;
+using CQRS.Read.Infrastructure.Persistence;
 
 namespace CQRS.Write.Domain.Test
 {
@@ -83,29 +84,29 @@ namespace CQRS.Write.Domain.Test
         [TestMethod]
         public void CarAggregate_CarEventHandlers_Handle_CarCreatedEvent_VerifyAllExpectations()
         {
-            CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
-                = MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>();
-            carRepository.Expect(c => c.Insert(null)).IgnoreArguments();
+            IDataContext dataContext = MockRepository.GenerateMock<IDataContext>();
+            dataContext.Expect(c => c.Cars).Return(MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>());
+            dataContext.Cars.Expect(c => c.Insert(null)).IgnoreArguments();
 
-            CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);
+            CarEventHandlers eventHandlers = new CarEventHandlers(dataContext);
             CarCreatedEvent @event = new CarCreatedEvent(1, CQRS.Write.Domain.Cars.CarClass.Normal, "Car", 200, 5);
             eventHandlers.Handle(@event);
 
-            carRepository.VerifyAllExpectations();
+            dataContext.Cars.VerifyAllExpectations();
         }
 
         [TestMethod]
         public void CarAggregate_CarEventHandlers_Handle_CarDeletedEvent_VerifyAllExpectations()
         {
-            CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository carRepository
-                = MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>();
-            carRepository.Expect(c => c.Delete(1)).IgnoreArguments();
+            IDataContext dataContext = MockRepository.GenerateMock<IDataContext>();
+            dataContext.Expect(c => c.Cars).Return(MockRepository.GenerateMock<CQRS.Read.Infrastructure.Persistence.Cars.ICarRepository>());
+            dataContext.Cars.Expect(c => c.Delete(1)).IgnoreArguments();
 
-            CarEventHandlers eventHandlers = new CarEventHandlers(carRepository);
+            CarEventHandlers eventHandlers = new CarEventHandlers(dataContext);
             CarDeletedEvent @event = new CarDeletedEvent(1);
             eventHandlers.Handle(@event);
 
-            carRepository.VerifyAllExpectations();
+            dataContext.Cars.VerifyAllExpectations();
         }
     }
 }

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\IDataContext.cs" />
+    <Compile Include="Persistence\MemoryDataContext.cs" />
     <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Persistence\Cars\CarMemoryRepository.cs" />
     <Compile Include="Persistence\Cars\Car.cs" />
