@@ -27,7 +27,8 @@ namespace ConsoleApplication
 - Car Searcher -
     1. Search
     2. Add (random)
-    3. Remove
+    3. Rename
+    4. Remove
     Esc to exit
 
   Write number option: ");
@@ -37,7 +38,7 @@ namespace ConsoleApplication
                 IQueryable<CQRS.Read.Infrastructure.Persistence.Cars.Car> cars = carService.GetAll();
                 while (true)
                 {
-
+                    int readerLineID;
                     System.Console.WriteLine();
                     foreach (var car in cars)
                         System.Console.WriteLine($"Car ({car.Id}): {car}");
@@ -53,17 +54,31 @@ namespace ConsoleApplication
                         case ConsoleKey.D2:
                             System.Console.Write("\nWrite the car name to create random one ('exit' to leave): ");
                             readerLine = System.Console.ReadLine();
-                            if (!string.IsNullOrWhiteSpace(readerLine)
-                                && readerLine.ToLower() != "exit")
+                            if (!string.IsNullOrWhiteSpace(readerLine) && readerLine.ToLower() != "exit")
                                 commandBus.Send(new CarCreateCommand((CarClass)random.Next(2), readerLine, random.Next(150, 370), random.Next(0, 5)));
                             cars = carService.GetAll();
                             break;
                         case ConsoleKey.D3:
+                            System.Console.Write("\nWrite the car Id to rename ('exit' to leave): ");
+                            readerLine = System.Console.ReadLine();
+
+                            if (string.IsNullOrWhiteSpace(readerLine) || readerLine.ToLower() == "exit") break;
+
+                            int.TryParse(readerLine, out readerLineID);
+
+                            System.Console.Write("\nWrite the new car name ('exit' to leave): ");
+                            readerLine = System.Console.ReadLine();
+
+                            if (string.IsNullOrWhiteSpace(readerLine) || readerLine.ToLower() == "exit") break;
+
+                            commandBus.Send(new CarRenameCommand(readerLineID, readerLine));
+                            cars = carService.GetAll();
+                            break;
+                        case ConsoleKey.D4:
                             System.Console.Write("\nWrite the car Id to remove ('exit' to leave): ");
                             readerLine = System.Console.ReadLine();
                             if (string.IsNullOrWhiteSpace(readerLine)) break;
 
-                            int readerLineID;
                             int.TryParse(readerLine, out readerLineID);
                             try { commandBus.Send(new CarDeleteCommand(readerLineID)); }
                             catch { }
@@ -90,8 +105,8 @@ namespace ConsoleApplication
 
             IDataContext dataContext = new MemoryDataContext(carRepository);
 
-            commandBus.RegisterCommandHandlers(new CarCommandHandlers(dataContext, commandEventRepository));
-            commandBus.RegisterEventHandlers(new CarEventHandlers(dataContext));
+            commandBus.RegisterCommandHandlers(new CarCommandHandlers(carService, commandEventRepository));
+            commandBus.RegisterEventHandlers(new CarEventHandlers(carService));
 
             commandBus.Send(new CarCreateCommand(CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0));
             commandBus.Send(new CarCreateCommand(CarClass.Sport, "Audi R8", 335, 2));

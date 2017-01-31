@@ -9,7 +9,7 @@ using CQRS.Write.Domain.Commands;
 
 namespace CQRS.Write.Application.Cars
 {
-    public class CarCreateCommand : ICommand
+    public class CarCreateCommand : Command
     {
         public CarClass CarClass { get; set; }
         public string Name { get; set; }

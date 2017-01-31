@@ -63,6 +63,10 @@
     <Compile Include="ForTesting\TestAgrregateRootCreateEvent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Domain\CQRS.Read.Application.csproj">
+      <Project>{F522767B-A2CD-460E-9D08-21222EBB70B9}</Project>
+      <Name>CQRS.Read.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
       <Project>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</Project>
       <Name>CQRS.Read.Infrastructure</Name>

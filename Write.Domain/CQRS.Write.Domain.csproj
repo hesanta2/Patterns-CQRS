@@ -43,9 +43,11 @@
     <Compile Include="AggregateRoot.cs" />
     <Compile Include="Cars\Car.cs" />
     <Compile Include="Cars\CarClass.cs" />
+    <Compile Include="Cars\CarRenamedEvent.cs" />
     <Compile Include="Cars\CarDeletedEvent.cs" />
     <Compile Include="Cars\CarCreatedEvent.cs" />
     <Compile Include="Cars\CarType.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\ICommandHandler.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandEventRepository.cs" />
@@ -63,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Domain\CQRS.Read.Application.csproj">
+      <Project>{F522767B-A2CD-460E-9D08-21222EBB70B9}</Project>
+      <Name>CQRS.Read.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
       <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
       <Name>CQRS.Read.Infrastructure</Name>

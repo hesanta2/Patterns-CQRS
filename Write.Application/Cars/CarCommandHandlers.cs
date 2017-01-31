@@ -4,24 +4,32 @@ using CQRS.Write.Domain.Commands;
 using System;
 using Domain.Command;
 using CQRS.Read.Infrastructure.Persistence;
+using CQRS.Read.Application.Cars;
 
 namespace CQRS.Write.Application.Cars
 {
     public class CarCommandHandlers : ICommandHandler<CarCreateCommand>, ICommandHandler<CarDeleteCommand>, ICommandHandler
     {
         private readonly ICommandEventRepository eventRepository;
-        private readonly IDataContext dataContext;
+        private readonly ICarService carService;
 
-        public CarCommandHandlers(IDataContext dataContext, ICommandEventRepository eventRepository)
+        public CarCommandHandlers(ICarService carService, ICommandEventRepository eventRepository)
         {
             this.eventRepository = eventRepository;
-            this.dataContext = dataContext;
+            this.carService = carService;
         }
 
         public void Handle(CarCreateCommand command)
         {
-            Car item = new Car(this.dataContext.Cars.Get().Count() + 1, command.CarClass, command.Name, command.MaxSpeed, command.Doors);
+            Car item = new Car(this.carService.GetAll().Count() + 1, command.CarClass, command.Name, command.MaxSpeed, command.Doors);
 
+            this.eventRepository.Save(item);
+        }
+
+        public void Handle(CarRenameCommand command)
+        {
+            Car item = this.eventRepository.GetById<Car>(command.Id);
+            item.Rename(command.Name);
             this.eventRepository.Save(item);
         }
 

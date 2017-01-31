@@ -6,16 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using CQRS.Write.Domain.Events;
 using CQRS.Read.Infrastructure.Persistence;
+using CQRS.Read.Application.Cars;
 
 namespace CQRS.Write.Domain.Cars
 {
     public class CarEventHandlers : IEventHandler<CarCreatedEvent>, IEventHandler<CarDeletedEvent>
     {
-        private readonly IDataContext dataContext;
+        private readonly ICarService carService;
 
-        public CarEventHandlers(IDataContext dataContext)
+        public CarEventHandlers(ICarService carService)
         {
-            this.dataContext = dataContext;
+            this.carService = carService;
         }
 
         public void Handle(CarCreatedEvent @event)
@@ -28,12 +29,19 @@ namespace CQRS.Write.Domain.Cars
                                 @event.MaxSpeed,
                                 @event.Doors
                             );
-            this.dataContext.Cars.Insert(car);
+            this.carService.Insert(car);
+        }
+
+        public void Handle(CarRenamedEvent @event)
+        {
+            var item = this.carService.Find(@event.AggregateId);
+            item.Name = @event.Name;
+            this.carService.Update(item);
         }
 
         public void Handle(CarDeletedEvent @event)
         {
-            this.dataContext.Cars.Delete(@event.AggregateId);
+            this.carService.Delete(@event.AggregateId);
         }
 
     }
