@@ -17,6 +17,16 @@ namespace CQRS.Read.Infrastructure.Persistence.Cars
             carMemoryList.Add(entity);
         }
 
+        public void Update(Car entity)
+        {
+            var repositoryItem = this.Find(entity.Id);
+
+            repositoryItem.Class = entity.Class;
+            repositoryItem.Name = entity.Name;
+            repositoryItem.MaxSpeed = entity.MaxSpeed;
+            repositoryItem.Doors = entity.Doors;
+        }
+
         public void Delete(Car entity)
         {
             carMemoryList.Remove(entity);

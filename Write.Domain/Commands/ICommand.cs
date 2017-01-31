@@ -6,5 +6,8 @@ using System.Threading.Tasks;
 
 namespace CQRS.Write.Domain.Commands
 {
-    public interface ICommand { }
+    public interface ICommand
+    {
+        string Type { get; }
+    }
 }

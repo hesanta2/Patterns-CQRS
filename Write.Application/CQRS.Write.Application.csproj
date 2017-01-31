@@ -41,11 +41,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cars\CarCommandHandlers.cs" />
+    <Compile Include="Cars\CarRenameCommand.cs" />
     <Compile Include="Cars\CarCreateCommand.cs" />
     <Compile Include="Cars\CarDeleteCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Domain\CQRS.Read.Application.csproj">
+      <Project>{F522767B-A2CD-460E-9D08-21222EBB70B9}</Project>
+      <Name>CQRS.Read.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
       <Project>{0f21b921-5092-46c6-8e1e-9c6e832ee796}</Project>
       <Name>CQRS.Read.Infrastructure</Name>

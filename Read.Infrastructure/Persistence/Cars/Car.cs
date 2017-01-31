@@ -12,11 +12,11 @@ namespace CQRS.Read.Infrastructure.Persistence.Cars
 
     public class Car
     {
-        public int Id { get; protected set; }
-        public CarClass Class { get; private set; }
-        public string Name { get; private set; }
-        public int MaxSpeed { get; private set; }
-        public int Doors { get; private set; }
+        public int Id { get; set; }
+        public CarClass Class { get; set; }
+        public string Name { get; set; }
+        public int MaxSpeed { get; set; }
+        public int Doors { get; set; }
 
         public Car(int id, CarClass carClass, string name, int maxSpeed, int doors)
         {
