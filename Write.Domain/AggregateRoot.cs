@@ -43,6 +43,7 @@ namespace CQRS.Write.Domain
             if (isNew)
             {
                 @event.Version = this.eventChanges.Count() + 1;
+                @event.Timestamp = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
                 this.eventChanges.Add(@event);
             }
         }
