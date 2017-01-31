@@ -12,6 +12,6 @@ namespace CQRS.Write.Domain.Cars
     {
         public int AggregateId { get; }
 
-        public CarDeletedEvent(int aggregateId) { this.AggregateId = aggregateId; }
+        public CarDeletedEvent(int aggregateId) : base() { this.AggregateId = aggregateId; }
     }
 }

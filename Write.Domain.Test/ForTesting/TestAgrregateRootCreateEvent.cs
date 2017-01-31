@@ -13,7 +13,6 @@ namespace CQRS.Write.Domain.Test.ForTesting
 
         public TestAgrregateRootCreateEvent(int id)
         {
-            this.Version = 1;
             this.Id = id;
         }
     }
