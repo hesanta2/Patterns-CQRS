@@ -7,10 +7,7 @@ namespace CQRS.Read.Infrastructure.Persistence.Cars
 {
     public class CarMemoryRepository : ICarRepository
     {
-        [ThreadStatic]
-        private static List<Car> carMemoryList = new List<Car>()
-        {
-        };
+        private static List<Car> carMemoryList = new List<Car>();
 
         public void Insert(Car entity)
         {

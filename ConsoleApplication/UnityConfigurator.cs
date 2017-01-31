@@ -4,6 +4,7 @@ using CQRS.Read.Infrastructure.Persistence.Cars;
 using CQRS.Write.Domain.Commands;
 using CQRS.Write.Infrastructure.Commands;
 using CQRS.Write.Domain.Events;
+using CQRS.Read.Infrastructure.Persistence;
 
 namespace ConsoleApplication
 {

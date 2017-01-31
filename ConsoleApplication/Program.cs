@@ -5,6 +5,7 @@ using System.Linq;
 using CQRS.Write.Application.Cars;
 using CQRS.Write.Domain.Cars;
 using CQRS.Write.Domain.Commands;
+using CQRS.Read.Infrastructure.Persistence;
 
 namespace ConsoleApplication
 {
@@ -87,8 +88,10 @@ namespace ConsoleApplication
             carService = UnityConfigurator.UnityContainer.Resolve<ICarService>();
             ICommandEventRepository commandEventRepository = UnityConfigurator.UnityContainer.Resolve<ICommandEventRepository>();
 
-            commandBus.RegisterCommandHandlers(new CarCommandHandlers(carRepository, commandEventRepository));
-            commandBus.RegisterEventHandlers(new CarEventHandlers(carRepository));
+            IDataContext dataContext = new MemoryDataContext(carRepository);
+
+            commandBus.RegisterCommandHandlers(new CarCommandHandlers(dataContext, commandEventRepository));
+            commandBus.RegisterEventHandlers(new CarEventHandlers(dataContext));
 
             commandBus.Send(new CarCreateCommand(CarClass.Sport | CarClass.Competition, "Ferrari Formula One", 370, 0));
             commandBus.Send(new CarCreateCommand(CarClass.Sport, "Audi R8", 335, 2));
