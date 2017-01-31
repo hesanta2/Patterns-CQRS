@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CQRS.Write.Domain;
+using CQRS.Write.Domain.Cars;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +12,15 @@ namespace CQRS.ViewerMonitor.Controllers
     public class MonitorController : ApiController
     {
         // GET api/demo 
-        public IEnumerable<string> Get()
+        public IEnumerable<object> Get()
         {
-            return Initiator.CommandEventRepository.get
+            return Initiator.DataContext.Cars.Get();
         }
 
         // GET api/demo/5 
-        public string Get(int id)
+        public IAggregateRoot Get(int id)
         {
-            return "Hello, World!";
+            return Initiator.CommandEventRepository.GetById<Car>(id);
         }
 
         // POST api/demo 

@@ -80,6 +80,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Read.Infrastructure\CQRS.Read.Infrastructure.csproj">
+      <Project>{0F21B921-5092-46C6-8E1E-9C6E832EE796}</Project>
+      <Name>CQRS.Read.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Write.Domain\CQRS.Write.Domain.csproj">
       <Project>{b2c299cf-2262-4a05-836a-82bb0c6baac5}</Project>
       <Name>CQRS.Write.Domain</Name>

@@ -10,18 +10,21 @@ using System.Web.Http;
 using System.Net.Http.Formatting;
 using Newtonsoft.Json.Serialization;
 using CQRS.Write.Domain.Commands;
+using CQRS.Read.Infrastructure.Persistence;
 
 namespace CQRS.ViewerMonitor
 {
     public static class Initiator
     {
+        public static IDataContext DataContext { get; set; }
         public static ICommandEventRepository CommandEventRepository { get; set; }
 
         private static OwinHttpListener owinHttpListener = null;
 
-        public static void InitializeMonitor(ICommandEventRepository commandEventRepository, int port = 8080)
+        public static void InitializeMonitor(IDataContext dataContext, ICommandEventRepository commandEventRepository, int port = 8080)
         {
             CommandEventRepository = commandEventRepository;
+            DataContext = dataContext;
 
             WebApp.Start<Startup>($"http://localhost:{port}");
         }
