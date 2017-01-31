@@ -8,6 +8,7 @@ namespace CQRS.Write.Domain.Events
 {
     public interface IEvent
     {
+        string Type { get; }
         int Version { get; set; }
     }
 }
