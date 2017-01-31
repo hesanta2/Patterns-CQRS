@@ -57,10 +57,10 @@ namespace CQRS.Write.Infrastructure.Commands
         }
 
 
-        public IEnumerable<IEvent> GetEvents(object id)
+        public IEnumerable<IEvent> GetEvents(object aggregateId)
         {
             List<IEvent> aggregateEvents;
-            if (aggregateEventsDictonary.TryGetValue(id, out aggregateEvents))
+            if (aggregateEventsDictonary.TryGetValue(aggregateId, out aggregateEvents))
                 return aggregateEvents;
 
             return new List<IEvent>();

@@ -8,7 +8,7 @@ namespace CQRS.Write.Domain.Commands
     public interface ICommandEventRepository
     {
         void Save(IAggregateRoot aggregate);
-        T GetByCommandId<T>(object id) where T : IAggregateRoot;
-        IEnumerable<IEvent> GetEvents(object id);
+        T GetByCommandId<T>(object aggregateId) where T : IAggregateRoot;
+        IEnumerable<IEvent> GetEvents(object aggregateId);
     }
 }

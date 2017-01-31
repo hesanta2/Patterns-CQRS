@@ -9,15 +9,17 @@ using System.Web.Http;
 
 namespace CQRS.ViewerMonitor.Controllers
 {
+    [RoutePrefix("api/monitor")]
     public class MonitorController : ApiController
     {
         // GET api/demo 
-        public IEnumerable<object> Get()
+        [Route("cars")]
+        public IEnumerable<object> GetCars()
         {
             return Initiator.DataContext.Cars.Get();
         }
 
-        // GET api/demo/5 
+        [Route("cars/{id}/events")]
         public IEnumerable<object> Get(int id)
         {
             return Initiator.CommandEventRepository.GetEvents(id);

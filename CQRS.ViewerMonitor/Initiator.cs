@@ -42,10 +42,7 @@ namespace CQRS.ViewerMonitor
             {
                 var config = new HttpConfiguration();
 
-                config.Routes.MapHttpRoute(
-                    "DefaultApi",
-                    "api/{controller}/{id}",
-                    new { id = RouteParameter.Optional });
+                config.MapHttpAttributeRoutes();
 
                 config.Formatters.Clear();
                 config.Formatters.Add(new JsonMediaTypeFormatter());
