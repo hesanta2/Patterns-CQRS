@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 
 namespace CQRS.Read.Infrastructure.Persistence.Cars
 {
@@ -13,6 +15,7 @@ namespace CQRS.Read.Infrastructure.Persistence.Cars
     public class Car
     {
         public int Id { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
         public CarClass Class { get; set; }
         public string Name { get; set; }
         public int MaxSpeed { get; set; }
