@@ -15,7 +15,7 @@ namespace CQRS.Write.Domain.Cars
         public int MaxSpeed { get; }
         public int Doors { get; }
 
-        public CarCreatedEvent(int id, CarClass carClass, string name, int maxSpeed, int doors)
+        public CarCreatedEvent(int id, CarClass carClass, string name, int maxSpeed, int doors) : base()
         {
             this.Id = id;
             this.Class = carClass;

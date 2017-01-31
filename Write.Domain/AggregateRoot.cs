@@ -13,7 +13,8 @@ namespace CQRS.Write.Domain
         private List<IEvent> eventChanges = new List<IEvent>();
 
         public T Id { get; protected set; }
-        public int Version { get; }
+        public int Version { get; protected set; }
+
 
         public object GetId() { return Id; }
 
@@ -39,7 +40,11 @@ namespace CQRS.Write.Domain
             if (method != null)
                 method.Invoke(this, new object[] { @event });
 
-            if (isNew) this.eventChanges.Add(@event);
+            if (isNew)
+            {
+                @event.Version = this.eventChanges.Count() + 1;
+                this.eventChanges.Add(@event);
+            }
         }
     }
 }
